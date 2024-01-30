@@ -1,5 +1,7 @@
+//API key for OpenWeatherMap
 const apiKey = "638c78e571f99b62fecd141059d59224";
 
+// Event listener for the search button click event
 document
   .getElementById("search-btn")
   .addEventListener("click", function (event) {
@@ -7,20 +9,24 @@ document
     fetchAndDisplayWeather();
   });
 
+// Default city set to London
 document.addEventListener("DOMContentLoaded", function () {
   const defaultCity = document.getElementById("city-input").value || "London";
-
+  // Set the input field value to the default city
   document.getElementById("city-input").value = defaultCity;
 
+  // Fetch and display weather for the default city
   fetchAndDisplayWeather();
 });
 
+// Function to fetch and display weather
 function fetchAndDisplayWeather() {
   const cityName = document.getElementById("city-input").value;
 
+  // URLs for the current weather and forecast APIs
   const currentWeatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
   const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`;
-
+  // Fetch and handle the current weather data
   fetch(currentWeatherApiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -29,19 +35,21 @@ function fetchAndDisplayWeather() {
       return response.json();
     })
     .then((data) => {
+      // Extract relevant data from the current weather response
       const currentTemperature = data.main.temp;
       const currentWindSpeed = data.wind.speed;
       const currentHumidity = data.main.humidity;
       const currentCity = data.name;
       const weatherIcon = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
-
+      // Create and append weather icon element
       const weatherIconElement = document.createElement("img");
       weatherIconElement.src = iconUrl;
       const today = new Date();
       const options = { year: "numeric", month: "2-digit", day: "2-digit" };
       const formattedToday = today.toLocaleDateString(undefined, options);
 
+      // Update the current weather display
       document.getElementById(
         "current-search-term"
       ).textContent = `${currentCity} (Today: ${formattedToday})`;
@@ -62,6 +70,7 @@ function fetchAndDisplayWeather() {
       console.error("Error fetching current weather:", error);
     });
 
+  // Fetch and handle the forecast data
   fetch(forecastApiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -72,11 +81,12 @@ function fetchAndDisplayWeather() {
     .then((data) => {
       const forecastData = [];
 
+      // Process the forecast data
       for (let i = 2; i <= data.list.length; i += 8) {
         const forecastDay = data.list[i];
         forecastData.push(forecastDay);
       }
-
+      // Clear the forecast container
       const forecastContainer = document.getElementById("forecast-container");
       forecastContainer.innerHTML = "";
 
