@@ -1,0 +1,121 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+header {
+  background-color: #343a40 !important;
+}
+header h1 {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 15px 0;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+main {
+  display: flex;
+  gap: 50px;
+  max-width: 1200px;
+  margin: auto;
+}
+main .sidebar {
+  flex: 0 0 20%;
+}
+main section {
+  flex: 0 0 70%;
+}
+
+#current {
+  border: 1px solid #111;
+  margin-top: 30px;
+  padding: 10px;
+}
+.search-term-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Form */
+#city-input,
+input[type="submit"] {
+  width: 100%;
+  padding: 7px;
+}
+#search-btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: #343a40;
+  color: white;
+  cursor: pointer;
+}
+.search-container,
+.input-container {
+  margin: 1rem 0;
+}
+ul#history {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#history li {
+  background-color: #343a40 !important;
+  color: #fff;
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* boxes */
+.boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.boxes div {
+  flex: 1;
+  background-color: #343a40 !important;
+  color: white;
+  padding-left: 5px;
+}
+
+/* endboxes */
+#current-search-term {
+  display: flex;
+  align-items: center;
+}
