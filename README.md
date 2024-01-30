@@ -23,5 +23,7 @@ Here is a screenshot of the weather dashboard webpage:
 
 ![alt"weather-dashboard-screenshot"](./images/weather-dashboard-screenshot.png)
 
+You can visit the website by clicking on this [LINK](https://cntervisi.github.io/Weather-Dashboard/).
+
 ## License
 This project is licensed under the MIT License. See the [license](./LICENSE) file for more details.
